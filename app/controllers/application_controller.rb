@@ -43,12 +43,15 @@ class ApplicationController < ActionController::Base
   def
     calculate_payment
     #params={"leopard"=>"5"}
-    @num1=params.fetch("num1").to_f
-    @num2=params.fetch("leopard").to_f
-    @num3=params.fetch("num3").to_f
+    @APR=params.fetch("num1").to_f
+    @num_years=params.fetch("leopard").to_f
+    @principal=params.fetch("num3").to_f
+   
 
-    @rate=@num1/12
-    # @payment=@num3*(rate)
+    @payment = (@principal * (@APR/100 / @num_years)).round(2)
+    @numerator = @principal*(@APR/100)*((1+@APR/100)**@num_years
+    @denominator = (1+@APR/100)**@num_years)-1
+    @monthly_pay = (@numerator/@denominator).round(2)
 
     render ({:template => "calculation_templates/payment_results.html.erb"})
   end
