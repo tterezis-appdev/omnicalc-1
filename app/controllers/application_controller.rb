@@ -59,8 +59,8 @@ class ApplicationController < ActionController::Base
   def
     calculate_random
     #params={"leopard"=>"5"}
-    @lower=params.fetch("Minimum").to_f
-    @upper=params.fetch("Maximum").to_f
+    @lower=params.fetch("minimum").to_f
+    @upper=params.fetch("maximum").to_f
 
     @random_num= rand(@upper - @lower + 1) + @lower
 
