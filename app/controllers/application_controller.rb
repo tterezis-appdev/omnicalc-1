@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
     calculate_payment
     #params={"leopard"=>"5"}
     @APR=params.fetch("num1").to_f
-    @num_years=params.fetch("leopard").to_f
+    @num_years=params.fetch("num2").to_f
     @principal=params.fetch("num3").to_f
    
 
@@ -54,5 +54,17 @@ class ApplicationController < ActionController::Base
     @monthly_pay = (@numerator/@denominator).round(2)
 
     render ({:template => "calculation_templates/payment_results.html.erb"})
+  end
+
+  def
+    calculate_random
+    #params={"leopard"=>"5"}
+    @lower=params.fetch("Minimum").to_f
+    @upper=params.fetch("Maximum").to_f
+
+    @random_num= rand(@upper - @lower + 1) + @lower
+
+
+    render ({:template => "calculation_templates/random_results.html.erb"})
   end
 end

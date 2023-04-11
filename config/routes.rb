@@ -14,5 +14,7 @@ get("/square_root/results",{:controller => "application", :action => "calculate_
 
 get("/payment/results",{:controller => "application", :action => "calculate_payment"})
 
+get("/random/results",{:controller => "application", :action => "calculate_random"})
+
 
 end
